@@ -14,6 +14,7 @@
         """,
 
     'author': 'Odoo Helper',
+    'license': 'AGPL-3',
 
     'depends': ['web_enterprise','base',],
      # templates
