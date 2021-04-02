@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_custom" inherit="web_enterprise.template" xml:space="preserve">
+
+    <div t-name="HomeMenu" class="o_home_menu" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);z-index: 0;">
+        <div class="o_menu_search o_bar_hidden d-none d-md-flex mb32" style="opacity: unset;border-radius: 25px;">
+            <span class="fa fa-search o_menu_search_icon" role="img" aria-label="Search" title="Search"/>
+            <input type="text" placeholder="Search..." class="o_menu_search_input" onfocus="this.value = this.value;"/>
+        </div>
+        <div class="o_home_menu_scrollable">
+            <t t-call="HomeMenu.Content"/>
+        </div>
+    </div>
+
+    <t t-name="HomeMenu.Content">
+    <div t-if="widget._state.apps.length" class="o_apps">
+        <t t-set="focused_app_index" t-value="widget.getAppIndex()"/>
+        <t t-foreach="widget._state.apps" t-as="app">
+          <a
+                  t-att-class="'o_app o_menuitem pl-1' + ((focused_app_index === app_index)? ' o_focused' : '')"
+                  t-att-data-menu="app.id"
+                  t-att-data-action-model="app.action ? app.action.split(',')[0] : ''"
+                  t-att-data-action-id="app.action"
+                  t-att-data-menu-xmlid="app.xmlid"
+                  t-att-href="app.href ? app.href : ('#menu_id='+app.id+'&amp;action_id='+app.action)">
+              <div class="te_menu_flip_box">
+
+                  <section class="te_service_icon te_menu_flip_box_inner" style="z-index:1000">
+                      <span class="te_three_blocks_icon bg-white rounded-circle text-center te_span_icon_block">
+                          <div t-if="app.web_icon_data" class="o_app_icon"
+                               t-attf-style="background-image: url('#{app.web_icon_data}');border-radius: 50%;z-index:1000"/>
+                                  <div t-else="" class="o_app_icon o_app_icon_has_pictogram"
+                                       t-attf-style="background-color: #{app.web_icon.background};">
+                            <i t-att-class="app.web_icon.class" t-attf-style="color: #{app.web_icon.color};"/>
+                          </div>
+                      </span>
+                  </section>
+                  <section class="text-center pt-4" style="background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,0,1) 100%);position: relative;top: -30px;border-radius: 4px;z-index: -1;">
+                      <div class="o_caption pt16 pb16" style="color:black;">
+                          <t t-esc="app.label"/>
+                      </div>
+                  </section>
+              </div>
+          </a>
+            <div class="box1">
+                <div class="ribbon ribbon-top-left"
+                     style="margin-top: -6px;margin-left: 8px;">
+                    <a href="#" target="_black">
+                        <span>
+                            Dashboard
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </t>
+    </div>
+        <div t-if="widget._state.menuItems.length" class="o_menuitems">
+        <t t-set="focused_menu_index" t-value="widget.getMenuIndex()"/>
+            <t t-foreach="widget._state.menuItems" t-as="menu">
+            <a role="menuitem"
+               t-att-class="'o_menuitem' + ((focused_menu_index === menu_index)? ' o_focused' : '')"
+               t-att-href="menu.href ? menu.href : ('#menu_id='+menu.id+'&amp;action_id='+menu.action)"
+               t-att-data-menu="menu.id">
+                  <span class="o_menuitem_parents"><t t-esc="menu.parents"/>
+                      /</span>
+                <t t-esc="menu.label"/>
+            </a>
+        </t>
+    </div>
+        <t t-if="widget._state.apps.length + widget._state.menuItems.length === 0">
+        <div class="o_no_result" role="alert">No result</div>
+    </t>
+        <div class="o_home_menu_footer" aria-hidden="true">
+        <img src="/web/static/src/img/logo_inverse_white_206px.png" alt="Logo"/>
+    </div>
+</t>
+
+    <header t-name="Menu" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);">
+        <nav class="o_main_navbar">
+            <a href="#" class="fa fa-th o_menu_toggle" title="Applications" aria-label="Applications" accesskey="h"/>
+            <button type="button" class="fa fa-bars float-right d-block d-md-none o_mobile_menu_toggle" title="Toggle menu"
+                    aria-label="Toggle menu"/>
+
+            <a href="#" class="o_menu_brand" role="button"/>
+            <ul class="o_menu_sections" role="menu"/>
+            <ul class="o_menu_systray" role="menu"/>
+        </nav>
+    </header>
+
+</templates>

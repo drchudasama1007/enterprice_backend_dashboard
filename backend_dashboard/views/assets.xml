@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_backend_theme" inherit_id="web.assets_backend">
+        <xpath expr="//link[last()]" position="after">
+            <link href="/backend_dashboard/static/src/scss/style.scss" rel="stylesheet"/>
+        </xpath>
+    </template>
+
+</odoo>

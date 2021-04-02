@@ -1,0 +1,91 @@
+.o_home_menu{
+    background-color: black;
+}
+.box_top{
+    background-color: yellow;
+    position: relative;
+    top: -30px;
+    border-radius: 4px;
+}
+.te_max_width_3_blocks .te_span_icon_block {
+    width: 160px;
+    height: 160px;
+    -webkit-box-shadow: 0 0 0 5px #f5f5f5;
+    -moz-box-shadow: 0 0 0 5px #f5f5f5;
+    -ms-box-shadow: 0 0 0 5px #f5f5f5;
+    -o-box-shadow: 0 0 0 5px #f5f5f5;
+    box-shadow: 0 0 0 5px #f5f5f5;
+    line-height: 80px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.te_max_width_3_blocks .te_three_blocks_icon {
+    position: absolute;
+    top: -90%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+}
+.te_menu_flip_box:hover .te_menu_flip_box_inner {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    z-index:1000
+}
+.box1{
+    .ribbon-top-left {
+        top: 5px;
+        left: -4px;
+    }
+    .ribbon {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        position: absolute;
+        z-index: 10;
+    }
+    .ribbon-top-left::before {
+        top: 0;
+        right: 4px;
+    }
+    .ribbon-top-left::before, .ribbon-top-left::after {
+        border-top-color: transparent;
+        border-left-color: transparent;
+    }
+    .ribbon::before, .ribbon::after {
+        position: absolute;
+        z-index: -1;
+        content: '';
+        display: block;
+        border: 5px solid #e1193e;
+    }
+    .ribbon-top-left span {
+        right: -25px;
+        top: 30px;
+        transform: rotate(-45deg);
+    }
+    .ribbon-top-left::after {
+        bottom: 4px;
+        left: 1px;
+    }
+    .ribbon span {
+      position: absolute;
+      display: block;
+      width: 225px;
+      padding: 15px 0;
+      background-color: #e1193e;
+      box-shadow: 0 5px 10px rgba(0,0,0,.1);
+      color: #fff;
+      font: 700 18px/1 'Lato', sans-serif;
+      text-shadow: 0 1px 1px rgba(0,0,0,.2);
+      text-transform: uppercase;
+      text-align: center;
+      font-size:14px;
+      padding-right: 17px;
+    }
+}
